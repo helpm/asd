@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	 <select id="left_sel"><option>请选择省份</option></select>
+      
+    
+    
+    <select id="right_sel"><option>请选择人</option></select>
+      
+    
+
+    <script type="text/javascript">
+      var personObj = {
+          personInfos : [
+            {
+              address : "黑龙江",
+              persons : [
+                {
+                  age : 27,
+                  name : "刘升旭",
+                  sex : "男"
+                },
+                {
+                  age : 23,
+                  name : "刘壮壮",
+                  sex : "男"
+                },
+                {
+                  age : 18,
+                  name : "王大旭",
+                  sex : "男"
+                }
+              ]
+            },
+            {
+              address : "辽宁",
+              persons : [
+                {
+                  age : 29,
+                  name : "武哥",
+                  sex : "男"
+                },
+                {
+                  age : 16,
+                  name : "马丹丹",
+                  sex : "女"
+                },
+                {
+                  age : 18,
+                  name : "王小刚",
+                  sex : "男"
+                }
+              ]
+            },
+            {
+              address : "吉林",
+              persons : [
+                {
+                  age : 33,
+                  name : "王老吉",
+                  sex : "男"
+                },
+                {
+                  age : 12,
+                  name : "加多宝",
+                  sex : "女"
+                }
+              ]
+            },
+            {
+              address : "北京",
+              persons : [
+                {
+                  age : 18,
+                  name : "王思聪",
+                  sex : "男"
+                },
+                {
+                  age : 33,
+                  name : "郭德纲",
+                  sex : "男"
+                },
+                {
+                  age : 18,
+                  name : "王大锤",
+                  sex : "男"
+                }
+              ]
+            },
+            {
+              address : "天津",
+              persons : [
+                {
+                  age : 21,
+                  name : "古尔丹",
+                  sex : "男"
+                },
+                {
+                  age : 18,
+                  name : "萨尔",
+                  sex : "女"
+                }
+              ]
+            },
+            {
+              address : "河北",
+              persons : [
+                {
+                  age : 33,
+                  name : "王宝强",
+                  sex : "男"
+                }
+              ]
+            }
+          ]
+      };
+
+	var left = document.getElementsByTagName("select")[0];
+	var right = document.getElementsByTagName("select")[1];
+	for(var i = 0; i < personObj.personInfos.length;i++){
+	 	var text = personObj.personInfos[i].address;
+		var option1 = document.createElement("option");
+		option1.innerText = text;
+		left.appendChild(option1);	
+	}
+	
+	left.onchange = function(){
+		for(i = 0; i < personObj.personInfos.length; i++){
+				if (this.value == personObj.personInfos[i].address) {
+							var bb = document.getElementsByClassName("personOption");
+							for(j = 0; j < bb.length; j++){
+								right.removeChild(bb[j]);
+								j--;
+							}
+							for(var z = 0; z < personObj.personInfos[i].persons.length; z++){
+			              	var optionRight = document.createElement("option");
+			              	optionRight.className = "personOption";
+			             	optionRight.innerHTML =  personObj.personInfos[i].persons[z].name;
+			              	right.appendChild(optionRight); 
+	            			}
+				}
+		}
+	}
+
+	</script>
+</body>
+</html>
